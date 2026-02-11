@@ -49,7 +49,6 @@ end)
 
 RegisterNetEvent('qb-pawnshop:server:meltItemRemove', function(itemName, itemAmount, item)
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
     if exports['qb-inventory']:RemoveItem(src, itemName, itemAmount, false, 'qb-pawnshop:server:meltItemRemove') then
         TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[itemName], 'remove')
         local meltTime = (tonumber(itemAmount) * item.time)
@@ -62,7 +61,6 @@ end)
 
 RegisterNetEvent('qb-pawnshop:server:pickupMelted', function(item)
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
     local playerCoords = GetEntityCoords(GetPlayerPed(src))
     local dist
     for _, value in pairs(Config.PawnLocation) do
